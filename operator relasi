@@ -1,0 +1,74 @@
+#include <stdio.h>
+
+int main() {
+    char nim[20];
+    char nama[100];
+    float nilai_tugas, nilai_uts, nilai_uas, nilai_akhir;
+    char grade;
+
+    printf("==================================\n");
+    printf("\033[1;32m");
+    printf("        penilaian mahasiswa\n");
+    printf("\033[0m");
+    printf("==================================\n\n\n");
+
+    // Input NIM, Nama, dan Nilai
+    printf("Masukkan NIM: ");
+    scanf("%s", nim);
+
+    printf("Masukkan Nama: ");
+    scanf(" %[^\n]s", nama);
+
+    printf("Masukkan Nilai Tugas: ");
+    scanf("%f", &nilai_tugas);
+
+    printf("Masukkan Nilai UTS: ");
+    scanf("%f", &nilai_uts);
+
+    printf("Masukkan Nilai UAS: ");
+    scanf("%f", &nilai_uas);
+
+    // Validasi nilai dalam rentang 0 hingga 100
+    if (nilai_tugas < 0 || nilai_tugas > 100 || nilai_uts < 0 || nilai_uts > 100 || nilai_uas < 0 || nilai_uas > 100) {
+        printf("Input nilai tidak valid. Nilai harus dalam rentang 0 hingga 100.\n");
+        return 1; 
+    }
+
+    // Menghitung nilai akhir dengan bobot
+    nilai_akhir = (0.4 * nilai_tugas) + (0.3 * nilai_uts) + (0.3 * nilai_uas);
+    
+    // Menentukan Grade
+    if (nilai_akhir >= 90) {
+        grade = 'A';
+    } else if (nilai_akhir >= 85) {
+        grade = 'A';
+        printf("Grade A-\n");
+    } else if (nilai_akhir >= 80) {
+        grade = 'B';
+        printf("Grade B+\n");
+    } else if (nilai_akhir >= 75) {
+        grade = 'B';
+    } else if (nilai_akhir >= 70) {
+        grade = 'B';
+        printf("Grade B-\n");
+    } else if (nilai_akhir >= 65) {
+        grade = 'C';
+    } else if (nilai_akhir >= 50) {
+        grade = 'D';
+    } else {
+        grade = 'E';
+    }
+
+    // Output NIM, Nama, Nilai Akhir, dan Grade
+    printf("\n\n==================================\n");
+    printf("\033[1;32m");
+    printf("         Hasil Perhitungan\n");
+    printf("\033[0m");
+    printf("==================================\n\n\n");
+    printf("NIM: %s\n", nim);
+    printf("Nama: %s\n", nama);
+    printf("Nilai Akhir: %.2f\n", nilai_akhir);
+    printf("Grade: %c\n", grade);
+
+    return 0;
+}
